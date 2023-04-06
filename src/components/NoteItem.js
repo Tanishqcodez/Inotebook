@@ -26,15 +26,12 @@ export default function NoteItem(props) {
                         return <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" key={tags}># {tags}</span>
                     })}
                     <div>
-                        <span onClick={()=>{
+                        <span onClick={() => {
                             setshowAlert(true)
-
                         }}>
                             <i className="fa-solid fa-trash mr-5 mt-2" ></i>
                         </span>
-                        <span onClick={()=>{
-                            setshowAlert(true)
-                        }}>
+                        <span>
                             <i className="fa-solid fa-edit"></i>
                         </span>
                     </div>

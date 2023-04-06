@@ -6,8 +6,11 @@ export default function Alert(props) {
     const context = useContext(NoteContext)
     const {showAlert, setshowAlert} = context
     
+
+
+    
     return (
-        <div className={showAlert ? 'show' : 'hidden'} id='alert'>
+        <div className={showAlert ? 'show' : 'hidden'} id='alert' >
             <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                 <span className="block sm:inline">{props.desc}</span>
                 <span className="absolute top-0 bottom-0 right-0 px-4 py-3" onClick={()=>{setshowAlert(false)}}>
