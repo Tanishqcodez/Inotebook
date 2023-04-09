@@ -45,7 +45,7 @@ router.post('/addnote', fetchUser, [
 // Route 3 : update an existing note using put on /api/notes/updatenote. Login required
 router.put('/updatenote/:id', fetchUser,
     async (req, res) => {
-        const { title, desc, tag } = req.body
+        const { title, desc, tags } = req.body
         try {
 
 
@@ -54,7 +54,7 @@ router.put('/updatenote/:id', fetchUser,
 
             if (title) { newNote.title = title }
             if (desc) { newNote.desc = desc }
-            if (tag) { newNote.tag = tag }
+            if (tags) { newNote.tags = tags }
 
             //find the note to be update and update it
 

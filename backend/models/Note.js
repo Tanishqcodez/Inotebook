@@ -16,7 +16,8 @@ const NotesSchema = new mongoose.Schema({
         // unique: true
     },
     tags: {
-        type: [String,Array]
+        type: String,
+        required: true
     },
     date: {
         type: Date,
