@@ -9,6 +9,8 @@ const JWT_SECRET = 'Harryisagoodb$oy';
 
 
 //  Route 1: User endpoint, saving a new user and no login required. Post req: /api/auth/createuser
+let success = false
+
 router.post('/createuser', [
     body('name', 'Enter a vaild name').isLength({ min: 3 }),
     body('email', 'Enter a valid email').isEmail(),
@@ -19,13 +21,13 @@ router.post('/createuser', [
         // if there are error
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json({ success: false,errors: errors.array() });
         }
         try {
             //checking whether the email exits or not
             let user = await User.findOne({ email: req.body.email })
             if (user) {
-                return res.status(400).json("Sorry! A user already exits with this email!")
+                return res.status(400).json({success: false, error: "Sorry! A user already exits with this email!"})
             }
             const salt = await bcrypt.genSalt(10);
 
@@ -44,8 +46,8 @@ router.post('/createuser', [
 
             const authToken = jwt.sign(data, JWT_SECRET)
 
-
-            res.json({ user ,authToken })
+            success = true
+            res.json({ success ,authToken })
 
 
         } catch (error) {
@@ -73,7 +75,8 @@ router.post('/login',
 
             const passwordCompare = await bcrypt.compare(password, user.password)
             if (!passwordCompare) {
-                return res.status(400).json({ error: 'Wrong username or password' })
+                success = false
+                return res.status(400).json({ success, error: 'Wrong username or password' })
             }
 
 
@@ -83,7 +86,8 @@ router.post('/login',
 
 
             const authToken = jwt.sign(data, JWT_SECRET)
-            res.send({ authToken })
+            success = true
+            res.send({ success ,authToken })
 
 
 

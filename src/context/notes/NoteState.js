@@ -26,7 +26,7 @@ export default function NoteState(props) {
             headers: {
                 "Content-Type": "application/json",
                 "auth-token":
-                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZiMTM3OTY1YTVkM2U1MmEyMmI3NSIsImlhdCI6MTY4MDg0NzE5OX0.HYs_une4ySOBz3BURz4WgOE-8Lbnl873zUMIopoxOtg",
+                    localStorage.getItem('token'),
             },
         });
         const json = await response.json()
@@ -42,7 +42,7 @@ export default function NoteState(props) {
             headers: {
                 "Content-Type": "application/json",
                 "auth-token":
-                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZiMTM3OTY1YTVkM2U1MmEyMmI3NSIsImlhdCI6MTY4MDg0NzE5OX0.HYs_une4ySOBz3BURz4WgOE-8Lbnl873zUMIopoxOtg",
+                    localStorage.getItem('token'),
             },
             body: JSON.stringify({ title, desc, tags }),
         });
@@ -59,7 +59,7 @@ export default function NoteState(props) {
             headers: {
                 "Content-Type": "application/json",
                 "auth-token":
-                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZiMTM3OTY1YTVkM2U1MmEyMmI3NSIsImlhdCI6MTY4MDg0NzE5OX0.HYs_une4ySOBz3BURz4WgOE-8Lbnl873zUMIopoxOtg",
+                    localStorage.getItem('token'),
             },
         });
          // eslint-disable-next-line
@@ -82,7 +82,7 @@ export default function NoteState(props) {
             headers: {
                 "Content-Type": "application/json",
                 "auth-token":
-                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZiMTM3OTY1YTVkM2U1MmEyMmI3NSIsImlhdCI6MTY4MDg0NzE5OX0.HYs_une4ySOBz3BURz4WgOE-8Lbnl873zUMIopoxOtg",
+                    localStorage.getItem('token'),
             },
             body: JSON.stringify({ title, desc, tags }),
         });
@@ -117,7 +117,7 @@ export default function NoteState(props) {
                 getNotes,
                 setshowAlert,
                 setAlertMessage,
-                AlertMessage
+                AlertMessage,
             }}
         >
             {props.children}
