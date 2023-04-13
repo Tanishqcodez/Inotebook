@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import NoteContext from "./NoteContext";
 
+
 export default function NoteState(props) {
     const host = "http://localhost:5000";
     const notesI = []
     const [notes, setNotes] = useState(notesI);
-
     // Alert code
     const [showAlert, setshowAlert] = useState(false);
     const [AlertMessage, setAlertMessage] = useState({ message: 'No Alerts to display!', color: true})
