@@ -2,8 +2,6 @@ import React from 'react'
 
 export default function About() {
 
-  let str = 'coding personal'
-  let tg = str.split(' ')
   return (
     <div className='mt-5'>
       <div>
@@ -25,7 +23,6 @@ export default function About() {
           </p>
         </ul>
       </div>
-    
     </div>
   )
 }

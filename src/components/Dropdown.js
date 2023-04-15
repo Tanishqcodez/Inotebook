@@ -2,7 +2,7 @@ import React from 'react'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Dropdown() {
     let navigate = useNavigate();
@@ -33,7 +33,7 @@ export default function Dropdown() {
             >
                 <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1">
-                        <Menu.Item>
+                        {/* <Menu.Item>
                             {({ active }) => (
                                 <Link to='/account'
                                     className={classNames(
@@ -44,7 +44,7 @@ export default function Dropdown() {
                                     Account settings
                                 </Link>
                             )}
-                        </Menu.Item>
+                        </Menu.Item> */}
                         {/* <Menu.Item> */}
                             {/* {({ active }) => (
                                 <a

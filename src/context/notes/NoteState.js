@@ -3,12 +3,21 @@ import NoteContext from "./NoteContext";
 
 
 export default function NoteState(props) {
-    const host = "http://localhost:5000";
+    const host = "https://inotebook-eyy0.onrender.com";
     const notesI = []
     const [notes, setNotes] = useState(notesI);
+    const [spinner, setspinner] = useState({
+        loading: false,
+        loader: ''
+    })
+    const [textLoading, setTextLoading] = useState({
+        state: false,
+        message: '',
+        color: '#36d7b7'
+    })
     // Alert code
     const [showAlert, setshowAlert] = useState(false);
-    const [AlertMessage, setAlertMessage] = useState({ message: 'No Alerts to display!', color: true})
+    const [AlertMessage, setAlertMessage] = useState({ message: 'No Alerts to display!', color: true })
     //*color true = red else green
     if (showAlert === true) {
         document.getElementById("alert").scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
@@ -19,8 +28,10 @@ export default function NoteState(props) {
 
     //Get all notes
     const getNotes = async () => {
+        setspinner({
+            loading: true,
+        })
         //API Call
-
         const response = await fetch(`${host}/api/notes/fetchallnotes/`, {
             method: "GET",
             headers: {
@@ -28,13 +39,20 @@ export default function NoteState(props) {
                 "auth-token":
                     localStorage.getItem('token'),
             },
-        });
+        })
         const json = await response.json()
+        setspinner({
+            loading: false,
+        })
         setNotes(json)
     };
 
     //Add a note
     const addNote = async (title, desc, tags) => {
+        setspinner({
+            loading: true,
+            loader: 'BeatLoader'
+        })
         //API Call
 
         const response = await fetch(`${host}/api/notes/addnote/`, {
@@ -47,12 +65,21 @@ export default function NoteState(props) {
             body: JSON.stringify({ title, desc, tags }),
         });
         const note = await response.json()
+        setspinner({
+            loading: false,
+            loader: 'BeatLoader'
+        })
         setNotes(notes.concat(note));
-        setAlertMessage({message: 'Note Added Successfully!', color: false})
+        setAlertMessage({ message: 'Note Added Successfully!', color: false })
         setshowAlert(true)
-};
+    };
     //delete a note
-    const deleteNote = async(id) => {
+    const deleteNote = async (id) => {
+        setTextLoading({
+            state: true,
+            message: 'Deleting Note!',
+            color: '#ad4040'
+        })
         //API CALL
         const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
             method: "DELETE",
@@ -62,21 +89,29 @@ export default function NoteState(props) {
                     localStorage.getItem('token'),
             },
         });
-         // eslint-disable-next-line
+        // eslint-disable-next-line
         const json = response.json()
         const newNotes = notes.filter((note) => {
             return note._id !== id;
         });
-        setAlertMessage({message: 'Note Deleted Successfully!', color: true})
-
+        setAlertMessage({ message: 'Note Deleted Successfully!', color: true })
+        setTextLoading({
+            state: false,
+            message: '',
+            color: '#ad4040'
+        })
         setshowAlert(true)
         setNotes(newNotes);
-        
+
     };
     //edit a note
     const editNote = async (id, title, desc, tags) => {
         //API Call
-
+        setTextLoading({
+            state: true,
+            message: 'Updating Note!',
+            color: '#36d7b7'
+        })
         const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
             method: "PUT",
             headers: {
@@ -86,9 +121,15 @@ export default function NoteState(props) {
             },
             body: JSON.stringify({ title, desc, tags }),
         });
+
+
         // eslint-disable-next-line
         const json = await response.json()
-
+        setTextLoading({
+            state: false,
+            message: '',
+            color: '#36d7b7'
+        })
         let newNotes = JSON.parse(JSON.stringify(notes))
         //client side
         for (let index = 0; index < newNotes.length; index++) {
@@ -96,11 +137,11 @@ export default function NoteState(props) {
             if (element._id === id) {
                 newNotes[index].title = title;
                 newNotes[index].desc = desc;
-                newNotes[index].tags = tags ;
+                newNotes[index].tags = tags;
                 break;
             }
         }
-        setAlertMessage({message: 'Note Updated Successfully!', color: false})
+        setAlertMessage({ message: 'Note Updated Successfully!', color: false })
         setshowAlert(true)
         setNotes(newNotes)
     };
@@ -118,9 +159,15 @@ export default function NoteState(props) {
                 setshowAlert,
                 setAlertMessage,
                 AlertMessage,
+                spinner,
+                setspinner,
+                textLoading
             }}
         >
             {props.children}
         </NoteContext.Provider>
     );
 }
+
+
+//TODO: Add alerts to edit and delete notes, use react-tostify {NA}!
