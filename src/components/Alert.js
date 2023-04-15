@@ -9,7 +9,7 @@ export default function Alert() {
 
     return (
         <section id='alert'>
-            <div className={` px-32 py-5 ${showAlert ? 'show' : 'hidden'}`}  >
+            <div className={` sm:px-32 sm:py-5 ${showAlert ? 'show' : 'hidden'}`}  >
                 <div className={` border ${AlertMessage.color ? 'bg-red-100 border-red-400 text-red-700' : 'bg-green-100 border-green-400 text-green-700'} px-4 py-3 rounded relative`} role="alert">
                     <span className="block sm:inline  ">{AlertMessage.message}</span>
                     <span className="absolute top-0 bottom-0 right-0 px-4 py-3" onClick={() => { setshowAlert(false) }}>

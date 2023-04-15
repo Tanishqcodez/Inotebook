@@ -84,7 +84,7 @@ export default function Notes() {
             <h4 className=" text-xl font-medium title-font mb-4 text-gray-900 text-center">
                 {spinner.loading ? <Loading /> : notes.length === 0 && 'No Notes to Display!'}
             </h4>
-            <div className='grid grid-cols-3 gap-5 mb-10'>
+            <div className='grid grid-cols-1 gap-5 mb-10 sm:grid-cols-3'>
 
                 {notes.map((notes) => {
                     return <NoteItem note={notes} updateNote={updateNote} key={notes._id} />

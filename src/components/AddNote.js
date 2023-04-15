@@ -41,10 +41,11 @@ const AddNote = () => {
                             </div>
                             <div className="p-2 w-1/2">
                                 <div className="relative">
-                                    <label htmlFor="tag" className="leading-7 text-sm text-gray-600">Tags [ use comma for multiple tags ]</label>
+                                    <label htmlFor="tag" className="leading-7 text-sm mb-2 text-gray-600">Tags</label>
                                     <input type="text" id="tag" name="tag" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" onChange={onChange} minLength={5} required value={note.tag}  />
                                 </div>
                             </div>
+                            <p className='ml-7'>Use comma for multiple tags</p>
                             <div className="p-2 w-full">
                                 <div className="relative">
                                     <label htmlFor="desc" className="leading-7 text-sm text-gray-600">Description</label>
