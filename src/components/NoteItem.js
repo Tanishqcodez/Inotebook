@@ -1,5 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useContext,useState } from 'react'
 import NoteContext from '../context/notes/NoteContext'
+import ReadMore from './ReadMore'
 
 export default function NoteItem(props) {
     const { note, updateNote } = props
@@ -8,16 +9,18 @@ export default function NoteItem(props) {
 
     let raw = note.tags
     let ftag = raw.split(',')
+    const [visiblity, setvisiblity] = useState(false)
     return (
         <>
             {/* make the func that launches a modal when clicked on read more */}
+            <ReadMore note={note} visiblity={visiblity} setvisiblity={setvisiblity}/>
             <span className="max-w-sm rounded overflow-hidden shadow-lg">
                 <div className="px-6 py-4">
                     <div className="font-bold text-xl">{note.title ? note.title.slice(0, 45) : ""}</div>
                     <p className="text-gray-700 text-base">
-                        {note.desc.length < 100 ? note.desc : note.desc.slice(0, 45) + "..."}
+                        {note.desc.length < 100 ? note.desc : note.desc.slice(0, 35) + "..."}
                     </p>
-                    {note.desc.length < 100 ? '' : <span className="text-gray-900 inline-flex items-center md:mb-2 lg:mb-0 cursor-pointer">Read More
+                    {note.desc.length < 100 ? '' : <span className="text-gray-900 inline-flex items-center md:mb-2 lg:mb-0 cursor-pointer" onClick={()=>{setvisiblity(true)}}>Read More
                         <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M5 12h14"></path>
                             <path d="M12 5l7 7-7 7"></path>
