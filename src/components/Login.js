@@ -20,7 +20,7 @@ export default function Login() {
             loader: 'BeatLoader'
         })
         e.preventDefault()
-        const response = await fetch("https://inotebook-eyy0.onrender.com/api/auth/login", {
+        const response = await fetch("https://inotebook-80ri.onrender.com/api/auth/login", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

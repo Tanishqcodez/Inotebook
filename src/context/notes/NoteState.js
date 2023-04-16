@@ -3,7 +3,7 @@ import NoteContext from "./NoteContext";
 
 
 export default function NoteState(props) {
-    const host = "https://inotebook-eyy0.onrender.com";
+    const host = "https://inotebook-80ri.onrender.com";
     const notesI = []
     const [notes, setNotes] = useState(notesI);
     const [spinner, setspinner] = useState({

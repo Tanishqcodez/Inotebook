@@ -16,7 +16,7 @@ export default function Signup() {
             loader: 'BeatLoader'   
     })
         e.preventDefault()
-        const response = await fetch("https://inotebook-eyy0.onrender.com/api/auth/createuser", {
+        const response = await fetch("https://inotebook-80ri.onrender.com/api/auth/createuser", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
