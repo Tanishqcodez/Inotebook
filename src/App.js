@@ -12,6 +12,7 @@ import NoteState from './context/notes/NoteState';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Account from './components/Account';
+import ContactUs from './components/ContactUs';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<Signup/>}/>
       <Route path='/account' element={<Account/>}/>
+      <Route path='/contact' element={<ContactUs/>}/>
     </Routes>
     </BrowserRouter>
     </NoteState>

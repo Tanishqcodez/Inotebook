@@ -19,6 +19,7 @@ export default function Navbar() {
                         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
                             <Link to='/' className={`mr-5 hover:text-gray-900  ${location.pathname === "/" ? " underline underline-offset-2" : ""}`}>Home</Link>
                             <Link to='/about' className={`mr-5 hover:text-gray-900  ${location.pathname === "/about" ? " underline underline-offset-2" : ""}`}>About</Link>
+                            <Link to='/contact' className={`mr-5 hover:text-gray-900  ${location.pathname === "/contact" ? " underline underline-offset-2" : ""}`}>Contact Us</Link>
                             {!localStorage.getItem('token') ? <>
                                 <Link to='/login' className={`mr-5 hover:text-gray-900  ${location.pathname === "/login" ? " underline underline-offset-2" : ""}`}>Login</Link>
                                 <Link to='/signup' className={`mr-5 hover:text-gray-900  ${location.pathname === "/signup" ? " underline underline-offset-2" : ""}`}>Sign Up</Link>
